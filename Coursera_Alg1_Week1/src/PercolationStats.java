@@ -36,7 +36,7 @@ public class PercolationStats {
 
 		int unionTotalCalls = 0;
 		int findTotalCalls = 0;
-		for (int i = 0; i < T; i++) {
+		for (int i = 0; i < T; i++) {	
 			Collections.shuffle(nodes);
 			Node[] d = new Node[nodes.size()];
 			nodes.toArray(d);
@@ -62,7 +62,7 @@ public class PercolationStats {
 //			unionTotalCalls += p.w.unionCallCount;
 //			findTotalCalls += p.w.findCallCount;
 
-			System.err.println((System.currentTimeMillis() - start) / 1000.0);
+//			System.err.println((System.currentTimeMillis() - start) / 1000.0);
 		}
 		double u = sumx / (double) T;
 		double o2 = 0;
@@ -75,11 +75,11 @@ public class PercolationStats {
 		double i2 = u + (1.96 * o) / Math.sqrt(T);
 		mean = u;
 		stddev = o;
-		System.err.println(u);
-		System.err.println(o);
-		System.err.println(i1 + " " + i2);
-		System.err.println("N = " + N + " union=" + unionTotalCalls + " find="
-				+ findTotalCalls);
+//		System.err.println(u);
+//		System.err.println(o);
+//		System.err.println(i1 + " " + i2);
+//		System.err.println("N = " + N + " union=" + unionTotalCalls + " find="
+//				+ findTotalCalls);
 	}
 
 	public double mean() // sample mean of percolation threshold
@@ -93,10 +93,19 @@ public class PercolationStats {
 		return stddev;
 	}
 
+	public double confidenceLo(){
+		return stddev;
+	}             // returns lower bound of the 95% confidence interval
+   	public double confidenceHi(){
+   		return stddev;
+   	}
+
 	public static void main(String[] args) // test client, described below
 	{
-		 int N = Integer.parseInt(args[0]);
-		 int T = Integer.parseInt(args[1]);
+//		 int N = Integer.parseInt(args[0]);
+//		 int T = Integer.parseInt(args[1]);
+		 int N = 200;
+		 int T = 100;
 		//
 //		 if (N < 0 || T < 0)
 		// throw new IllegalArgumentException();
